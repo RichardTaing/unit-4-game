@@ -68,21 +68,6 @@ for (var i = 0; i < characters.length; i++) {
   $img.attr("alt", characters[i].name);
   charElements[i].append($img);
 
-  // ToDo: Try and resize all images to 300?
-  // $(document).ready(function() {
-  //   $("img").each(function() {
-  //     var maxWidth = 300;
-  //     var ratio = 0;
-  //     var img = $(this);
-
-  //     if (img.width() > maxWidth) {
-  //       ratio = img.height() / img.width();
-  //       img.attr("width", maxWidth);
-  //       img.attr("height", maxWidth * ratio);
-  //     }
-  //   });
-  // });
-
   //add character's health points to element
   var $hp = $("<p>");
   $hp.text(characters[i].healthPoints);
@@ -104,7 +89,7 @@ function Game() {
 var game = new Game();
 
 $("#your_character").hide();
-$("#enemies_available").hide();
+$("#opponents_available").hide();
 $("#fight_section").hide();
 $("#defender_section").hide();
 $("#message").hide();
@@ -139,18 +124,18 @@ $(".char-container").on("click", function(event) {
     $("#you").append(game.player.element);
 
     for (var i = 0; i < game.defenders.length; i++) {
-      game.defenders[i].element.addClass("enemy");
-      $("#enemies").append(game.defenders[i].element);
+      game.defenders[i].element.addClass("opponent");
+      $("#opponents").append(game.defenders[i].element);
     }
 
-    //show the your_character and enemies_available divs
+    //show the your_character and opponents_available divs
     $("#your_character").show();
-    $("#enemies_available").show();
+    $("#opponents_available").show();
     $("#character_select").hide();
   }
 });
 
-$("#enemies").on("click", ".enemy", function(event) {
+$("#opponents").on("click", ".opponent", function(event) {
   if (game.state === "defender selection") {
     $("#message p").text("");
     $("#message").show();
@@ -175,7 +160,7 @@ $("#enemies").on("click", ".enemy", function(event) {
     game.state = "battle";
 
     $("#defender").append(game.currentDefender.element);
-    game.currentDefender.element.removeClass("enemy");
+    game.currentDefender.element.removeClass("opponent");
     game.currentDefender.element.addClass("defender");
 
     $("#defender_section").show();
@@ -184,7 +169,7 @@ $("#enemies").on("click", ".enemy", function(event) {
 
 $("#attack").on("click", function(event) {
   if (game.state === "defender selection") {
-    $("#message p").text("No enemy here.");
+    $("#message p").text("No opponents selected.");
   }
 
   if (game.state === "battle") {
@@ -204,7 +189,7 @@ $("#attack").on("click", function(event) {
         game.state = "over";
 
         $("#message p").text("You won! GAME OVER!!!");
-        $("#enemies_available").hide();
+        $("#opponents_available").hide();
         $("#defender_section").hide();
         $("#fight_section").hide();
       } else {
@@ -216,7 +201,7 @@ $("#attack").on("click", function(event) {
         $("#message p").text(
           "You have defeated " +
             game.currentDefender.name +
-            "! Choose another enemy."
+            "! Choose another opponent."
         );
       }
     } else {
@@ -232,7 +217,7 @@ $("#attack").on("click", function(event) {
         game.state = "over";
 
         $("#message p").text("You have been defeated...GAME OVER!!!");
-        $("#enemies_available").hide();
+        $("#opponents_available").hide();
         $("#your_character").hide();
         $("#fight_section").hide();
       } else {
@@ -270,7 +255,7 @@ $("#restart").on("click", function(event) {
   for (var i = 0; i < charElements.length; i++) {
     $("#characters").append(charElements[i]);
 
-    charElements[i].removeClass("enemy").removeClass("defender");
+    charElements[i].removeClass("opponent").removeClass("defender");
 
     charElements[i].find("p").text(characters[i].healthPoints);
   }
