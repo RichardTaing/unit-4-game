@@ -8,27 +8,60 @@
     <!-- jQuery Link -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <title>Crystal Collector</title>
-    <!-- Bootsrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>TMNT RPG</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <!-- Title-->
+    <header>
+        <h1>Teenage Mutant Ninja Turtles RPG!</h1>
+    </header>
 
-    <!-- Game Instructions-->
-    <!-- Random Numbers -->
-    <!-- Wins/Losses -->
-    <!-- Crystals -->
-    <img src="assets/image/emerald-green.jpg" alt="emerald-green">
-    <img src="assets/image/ruby-red.jpg" alt="ruby-red">
-    <img src="assets/image/sapphire-royal-blue.jpg" alt="sapphire-royal-blue">
-    <img src="assets/image/yellow-citrine.jpg" alt="yellow-citrine">
-    <!-- Scores -->
+    <section id="character_select">
+        <h2>Select Your Pokemon!</h2>
+        <div id="characters" class="row">
+            <!-- initially append character images here -->
+        </div>
+    </section>
+
+    <div id="fight_row">
+        <section id="your_character">
+            <h2>Your Character</h2>
+            <div id="you" class="row">
+                <!-- append your character here once he is selected -->
+            </div>
+        </section>
+
+        <section id="message">
+            <p></p>
+        </section>
+
+        <section id="defender_section">
+            <h2>Defender</h2>
+            <div id="defender" class="row">
+                <!-- append defender here once defender is selected -->
+            </div>
+        </section>
+    </div>
+
+    <section id="fight_section">
+        <!-- <h2>Fight Section</h2> -->
+        <button type="button" id="attack" class="btn">Attack</button>
+    </section>
+
+    <section id="enemies_available">
+        <h2>Enemies Available to Attack</h2>
+        <div id="enemies" class="row">
+            <!-- append enemies here once character is selected -->
+        </div>
+    </section>
+
+
+    <section id="restart_section">
+        <button type="button" id="restart" class="btn">Restart Game</button>
+    </section>
     <!-- Javascript -->
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
