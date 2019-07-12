@@ -37,6 +37,7 @@ var donatello = new Character(
   15,
   "donatello"
 );
+
 var raphael = new Character("Raphael", "raphael", 180, 3, 25, "raphael");
 
 var characters = [leonardo, michelangelo, donatello, raphael];
@@ -47,6 +48,8 @@ var $donatello = $("<div>");
 var $raphael = $("<div>");
 
 var charElements = [$leonardo, $michelangelo, $donatello, $raphael];
+
+// console.log(leonardo, michelangelo, donatello, raphael);
 
 //dynamically create jquery elements for each character
 for (var i = 0; i < characters.length; i++) {
@@ -64,6 +67,21 @@ for (var i = 0; i < characters.length; i++) {
   $img.attr("src", characters[i].imgPath);
   $img.attr("alt", characters[i].name);
   charElements[i].append($img);
+
+  // ToDo: Try and resize all images to 300?
+  // $(document).ready(function() {
+  //   $("img").each(function() {
+  //     var maxWidth = 300;
+  //     var ratio = 0;
+  //     var img = $(this);
+
+  //     if (img.width() > maxWidth) {
+  //       ratio = img.height() / img.width();
+  //       img.attr("width", maxWidth);
+  //       img.attr("height", maxWidth * ratio);
+  //     }
+  //   });
+  // });
 
   //add character's health points to element
   var $hp = $("<p>");
@@ -164,10 +182,103 @@ $("#enemies").on("click", ".enemy", function(event) {
   }
 });
 
-// todo: attack area
+$("#attack").on("click", function(event) {
+  if (game.state === "defender selection") {
+    $("#message p").text("No enemy here.");
+  }
 
-// todo: buttons : attack & restart
-// todo: character damage display
-// todo: character attack display
+  if (game.state === "battle") {
+    game.currentDefender.healthPoints -= game.player.attackPower;
 
-// todo: restart
+    game.player.attackPower += game.player.baseAttackPower;
+
+    if (game.currentDefender.healthPoints <= 0) {
+      game.currentDefender.element.detach();
+
+      //remove this character from game.defenders array
+      var defenderIndex = game.defenders.indexOf(game.currentDefender);
+      game.defenders.splice(defenderIndex, 1);
+
+      //if there are no remaining defenders...
+      if (game.defenders.length === 0) {
+        game.state = "over";
+
+        $("#message p").text("You won! GAME OVER!!!");
+        $("#enemies_available").hide();
+        $("#defender_section").hide();
+        $("#fight_section").hide();
+      } else {
+        game.state = "defender selection";
+
+        $("#defender_section").hide();
+        // $("#message").hide();
+
+        $("#message p").text(
+          "You have defeated " +
+            game.currentDefender.name +
+            "! Choose another enemy."
+        );
+      }
+    } else {
+      game.player.healthPoints -= game.currentDefender.counterAttackPower;
+
+      game.player.element.find("p").text(game.player.healthPoints);
+      game.currentDefender.element
+        .find("p")
+        .text(game.currentDefender.healthPoints);
+
+      //if player is dead...
+      if (game.player.healthPoints <= 0) {
+        game.state = "over";
+
+        $("#message p").text("You have been defeated...GAME OVER!!!");
+        $("#enemies_available").hide();
+        $("#your_character").hide();
+        $("#fight_section").hide();
+      } else {
+        //display the damage each character inflicts upon the other
+        var lastAttack = game.player.attackPower - game.player.baseAttackPower;
+        $("#message p").text(
+          "You attacked " +
+            game.currentDefender.name +
+            " for " +
+            lastAttack +
+            " damage. " +
+            game.currentDefender.name +
+            " attacked for " +
+            game.currentDefender.counterAttackPower +
+            " damage."
+        );
+      }
+    }
+
+    if (game.state === "over") {
+      $("#restart").show();
+    }
+  }
+});
+
+$("#restart").on("click", function(event) {
+  game.player.attackPower = game.player.baseAttackPower;
+
+  for (var i = 0; i < characters.length; i++) {
+    characters[i].healthPoints = characters[i].baseHealthPoints;
+  }
+
+  game = new Game();
+
+  for (var i = 0; i < charElements.length; i++) {
+    $("#characters").append(charElements[i]);
+
+    charElements[i].removeClass("enemy").removeClass("defender");
+
+    charElements[i].find("p").text(characters[i].healthPoints);
+  }
+
+  $("#message p").text("");
+  $("#defender_section").hide();
+  $("#message").hide();
+  $("#your_character").hide();
+  $("#character_select").show();
+  $("#restart").hide();
+});
