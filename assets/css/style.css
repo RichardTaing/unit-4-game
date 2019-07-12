@@ -1,44 +1,91 @@
 body {
+  background: url("../images/dojo.png") no-repeat center center fixed;
+  -webkit-backdrop-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  color: antiquewhite;
 }
 
 header {
 }
 
 h1 {
+  font-size: 3em;
+  margin-right: 80px;
 }
 
 h2 {
+  font-size: 2em;
+  margin: 20px 0px 20px 0px;
 }
 
 img {
 }
 
 .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .char-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /*background-color: white;*/
+  padding: 0px 10px 0px 10px;
+  /*border: 3px solid green;*/
+  margin: 0px 2px 0px 2px;
 }
 
 #fight_row {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #enemies_available h2 {
+  color: #00890b;
 }
 
 .enemy {
+  color: #00890b;
 }
 
 #defender_section h2 {
+  color: #00890b;
 }
 
 .defender {
+  color: #00890b;
 }
 
 #message {
+  color: white;
+  width: 300px;
+  font-size: 1.5em;
 }
 
 button {
+  background-color: #00890b;
+  color: white;
+  font-family: monospace, serif;
+  font-size: 1.2em;
+  border: 2px solid white;
+  padding: 10px 60px 10px 60px;
 }
