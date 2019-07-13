@@ -26,10 +26,15 @@ var sounds = {
     sound: new Howl({
       urls: ["./assets/sounds/win.mp3"]
     })
+  },
+  lose: {
+    sound: new Howl({
+      urls: ["./assets/sounds/lose.mp3"]
+    })
   }
-  // lose: { // will need to update this
+  // defeat: {
   //   sound: new Howl({
-  //     urls: ["./assets/sounds/lose.mp3"]
+  //     urls: ["./assets/sounds/defeat.mp3"]
   //   })
   // }
 };
@@ -202,10 +207,10 @@ $("#attack").on("click", function(event) {
       if (game.defenders.length === 0) {
         game.state = "over";
 
+        sounds.win.sound.play();
         $("#message p").text(
           "You won! Go Ninja, Go Ninja, Go; Go Ninja, Go ninja, Go!!!!"
         );
-        sounds.win.sound.play();
         $("#opponents_available").hide();
         $("#defender_section").hide();
         $("#fight_section").hide();
@@ -214,6 +219,7 @@ $("#attack").on("click", function(event) {
 
         $("#defender_section").hide();
         // $("#message").hide();
+        sounds.lose.sound.play();
 
         $("#message p").text(
           "You have defeated " +
@@ -234,6 +240,7 @@ $("#attack").on("click", function(event) {
         game.state = "over";
 
         $("#message p").text("You have been defeated...GAME OVER!!!");
+        sounds.lose.sound.play();
         $("#opponents_available").hide();
         $("#your_character").hide();
         $("#fight_section").hide();
