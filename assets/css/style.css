@@ -3,7 +3,7 @@ body {
   -webkit-backdrop-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  /* background-size: cover; */
   background-position: center center;
   height: 100%;
   color: #67ce22;
@@ -17,8 +17,8 @@ header {
 }
 
 img.center {
-  margin: 0 auto;
-  padding-top: 5px;
+  margin: auto;
+  padding-top: 15px;
   opacity: 0.6;
   width: 400px;
   height: auto;
