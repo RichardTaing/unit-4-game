@@ -182,7 +182,6 @@ $("#opponents").on("click", ".opponent", function(event) {
 });
 
 $("#attack").on("click", function(event) {
-  sounds.attack.sound.play();
   if (game.state === "defender selection") {
     $("#message p").text("No opponents selected.");
   }
