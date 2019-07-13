@@ -11,8 +11,6 @@ body {
   -webkit-backdrop-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  /* background-size: cover; */
-  background-position: center;
   height: 100%;
 }
 
@@ -23,11 +21,11 @@ header {
   text-align: center;
 }
 
-img.center {
+.center {
   margin: auto;
   padding-top: 15px;
   opacity: 0.6;
-  width: 400px;
+  width: 900px;
   height: auto;
 }
 
@@ -101,6 +99,7 @@ section {
   align-items: center;
 }
 
+#character_select,
 #your_character,
 #defender_section,
 #opponents_available {
@@ -109,15 +108,12 @@ section {
 }
 
 #message {
-  color: #ece41e;
+  color: #edae5b;
   width: 300px;
-  font-size: 2em;
-  font-family: Chlorinr;
+  font-size: 2.5em;
+  font-family: Turtle;
 }
 
-#message.lastAttack {
-  font-family: Chlorinr;
-}
 button {
   background-color: #00890b;
   color: white;
@@ -126,80 +122,3 @@ button {
   border: 2px solid white;
   padding: 10px 60px 10px 60px;
 }
-
-/* media queries */
-
-/* @media screen and (max-width: 980px) {
-    .hover-rotate {
-      width: 300px;
-      height: 300px;
-    }
-    input {
-      width: 95%;
-      padding: 10px;
-    }
-  
-    textarea {
-      width: 95%;
-      padding: 10px;
-    }
-  
-    #submit {
-      width: 50%;
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
-    .hover-rotate {
-      width: 200px;
-      height: 200px;
-    }
-    input {
-      width: 95%;
-      padding: 10px;
-    }
-  
-    textarea {
-      width: 95%;
-      padding: 10px;
-    }
-  
-    #submit {
-      width: 50%;
-    }
-  }
-  
-  @media screen and (max-width: 640px) {
-    .hover-rotate {
-      width: 100px;
-      height: 100px;
-    }
-    #logo {
-      float: none;
-      display: block;
-      overflow: auto;
-      width: 100%;
-    }
-    #masthead {
-      position: static;
-      top: 0%;
-    }
-    input {
-      width: 95%;
-      padding: 10px;
-    }
-    nav {
-      float: none;
-      display: block;
-      margin-bottom: 25px;
-      text-align: center;
-    }
-    textarea {
-      width: 95%;
-      padding: 10px;
-    }
-  
-    #submit {
-      width: 50%;
-      position: relative;
-    } */

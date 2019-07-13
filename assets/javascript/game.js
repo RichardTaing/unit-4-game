@@ -20,6 +20,20 @@ function Character(
   this.element = null;
 }
 
+var sounds = {
+  //ARRAY CONTAINING SOUND FILES
+  win: {
+    sound: new Howl({
+      urls: ["./assets/sounds/win.mp3"]
+    })
+  }
+  // lose: { // will need to update this
+  //   sound: new Howl({
+  //     urls: ["./assets/sounds/lose.mp3"]
+  //   })
+  // }
+};
+
 var leonardo = new Character("Leonardo", "leonardo", 120, 8, 12, "leonardo");
 var michelangelo = new Character(
   "Michelangelo",
@@ -168,6 +182,7 @@ $("#opponents").on("click", ".opponent", function(event) {
 });
 
 $("#attack").on("click", function(event) {
+  sounds.attack.sound.play();
   if (game.state === "defender selection") {
     $("#message p").text("No opponents selected.");
   }
@@ -188,7 +203,10 @@ $("#attack").on("click", function(event) {
       if (game.defenders.length === 0) {
         game.state = "over";
 
-        $("#message p").text("You won! GAME OVER!!!");
+        $("#message p").text(
+          "You won! Go Ninja, Go Ninja, Go; Go Ninja, Go ninja, Go!!!!"
+        );
+        sounds.win.sound.play();
         $("#opponents_available").hide();
         $("#defender_section").hide();
         $("#fight_section").hide();
@@ -221,18 +239,18 @@ $("#attack").on("click", function(event) {
         $("#your_character").hide();
         $("#fight_section").hide();
       } else {
-        //display the damage each character inflicts upon the other
+        //display the damages each character inflicts upon the other
         var lastAttack = game.player.attackPower - game.player.baseAttackPower;
         $("#message p").text(
           "You attacked " +
             game.currentDefender.name +
             " for " +
             lastAttack +
-            " damage. " +
+            " damages. " +
             game.currentDefender.name +
             " attacked for " +
             game.currentDefender.counterAttackPower +
-            " damage."
+            " damages."
         );
       }
     }
