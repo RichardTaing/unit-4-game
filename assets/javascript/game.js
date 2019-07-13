@@ -69,7 +69,7 @@ for (var i = 0; i < characters.length; i++) {
   charElements[i].append($img);
 
   //add character's health points to element
-  var $hp = $("<p>");
+  var $hp = $("<h4>");
   $hp.text(characters[i].healthPoints);
   charElements[i].append($hp);
 

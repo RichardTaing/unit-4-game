@@ -1,12 +1,19 @@
+@font-face {
+  font-family: "Turtle";
+  src: url("../font/Turtles/Turtles.otf");
+}
+@font-face {
+  font-family: "Chlorinr";
+  src: url("../font/Chlorinr/CHLORINR.TTF");
+}
 body {
-  background: url("../images/dojo.png") no-repeat center center fixed;
+  background: url("../images/dojo.png") no-repeat center fixed;
   -webkit-backdrop-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   /* background-size: cover; */
-  background-position: center center;
+  background-position: center;
   height: 100%;
-  color: #67ce22;
 }
 
 header {
@@ -27,6 +34,10 @@ img.center {
 h2 {
   font-size: 2em;
   margin: 20px 0px 20px 0px;
+}
+
+h4 {
+  font-size: 25px;
 }
 
 img {
@@ -54,7 +65,32 @@ section {
   justify-content: space-between;
   align-items: center;
   padding: 0px 10px 0px 10px;
+  font-weight: 900;
   margin: 0px 2px 0px 2px;
+  font-family: Turtle;
+  font-size: 25px;
+}
+
+/* #leonardo,
+#michelangelo,
+#donatello,
+#raphael {
+} */
+
+#leonardo {
+  color: #234fc2;
+}
+
+#michelangelo {
+  color: #c26f0b;
+}
+
+#donatello {
+  color: #4a0e80;
+}
+
+#raphael {
+  color: #b10d1b;
 }
 
 #fight_row {
@@ -65,28 +101,23 @@ section {
   align-items: center;
 }
 
-#opponents_available h2 {
-  color: #8434cc;
-}
-
-.opponent {
-  color: #8434cc;
-}
-
-#your_character {
-  color: #c26f0b;
-}
-
-#defender_section {
-  color: #b10d1b;
+#your_character,
+#defender_section,
+#opponents_available {
+  color: #00890b;
+  font-family: Chlorinr;
 }
 
 #message {
-  color: #f87575;
+  color: #ece41e;
   width: 300px;
-  font-size: 1.5em;
+  font-size: 2em;
+  font-family: Chlorinr;
 }
 
+#message.lastAttack {
+  font-family: Chlorinr;
+}
 button {
   background-color: #00890b;
   color: white;
